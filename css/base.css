@@ -1,0 +1,203 @@
+/* ============================================
+   BASE.CSS — Reset, Variables, Typography
+   Water Damage Template — palette sampled from the logo:
+   navy house, blue water, orange arrow.
+   Orange is reserved for call buttons (and the logo).
+   ============================================ */
+
+:root {
+  /* Logo colors */
+  --navy: #04274A;
+  --navy-deep: #031B35;
+  --navy-soft: #0B3563;
+  --blue: #016DCC;
+  --orange: #F76001;
+
+  --text-primary: #04274A;
+  --text-body: #3B4A5E;
+  --text-secondary: #64748B;
+  --text-on-dark: #ffffff;
+  --text-on-dark-secondary: #C3D3E6;
+
+  /* Brand — the logo's water blue */
+  --brand: #016DCC;
+  --brand-dark: #0157A3;
+  --brand-light: #3D9BEB;
+  --accent: #016DCC;
+  --accent-dark: #0157A3;
+  --accent-light: #7CC0FF;      /* blue that reads on navy */
+
+  /* Call-to-action — the logo's orange. Buttons only. */
+  --cta: #F76001;
+  --cta-dark: #DB5200;
+  --cta-shadow: 0 6px 18px rgba(247,96,1,0.28);
+  --cta-shadow-hover: 0 10px 26px rgba(247,96,1,0.36);
+
+  /* Backgrounds */
+  --bg-dark: #04274A;
+  --bg-dark-light: #0B3563;
+  --bg-white: #ffffff;
+  --bg-off-white: #F4F8FC;
+  --bg-light-gray: #E8F1FA;
+
+  /* Borders & Shadows */
+  --border-light: #DCE6F0;
+  --border-medium: #B8C7D9;
+  --shadow-sm: 0 1px 2px rgba(4,39,74,0.05);
+  --shadow-md: 0 4px 14px rgba(4,39,74,0.07);
+  --shadow-lg: 0 14px 34px rgba(4,39,74,0.10);
+  --shadow-xl: 0 24px 48px rgba(4,39,74,0.12);
+
+  /* Spacing */
+  --section-padding: 104px;
+  --section-padding-mobile: 64px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+  --transition-slow: 0.4s ease;
+
+  /* Gradients */
+  --gradient-brand: linear-gradient(135deg, #04274A 0%, #0B3563 100%);
+  --gradient-hero: linear-gradient(165deg, #04274A 0%, #031B35 100%);
+  --gradient-accent: linear-gradient(135deg, #016DCC 0%, #3D9BEB 100%);
+  --gradient-card-hover: linear-gradient(135deg, #F4F8FC 0%, #ffffff 100%);
+  --gradient-fresh: #F4F8FC;
+
+  --brand-tint-5: #F4F8FC;
+  --brand-tint-10: #E6F1FB;
+  --brand-tint-20: #C6DFF7;
+  --icon-bg: #E6F1FB;
+  --icon-bg-hover: #C6DFF7;
+
+  --star: #FBB424;
+  --ok: #22C55E;
+
+  --nav-h: 84px;
+}
+
+/* Reset */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: clip; }
+
+body {
+  overflow-x: clip;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-body);
+  background-color: var(--bg-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--brand); text-decoration: none; transition: color var(--transition-fast); }
+a:hover { color: var(--brand-dark); }
+ul, ol { list-style: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; font-size: inherit; }
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-primary);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.1rem, 4.6vw, 3.25rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: clamp(1.65rem, 3.4vw, 2.35rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+h3 { font-size: clamp(1.15rem, 2.2vw, 1.3rem); font-weight: 700; letter-spacing: -0.01em; }
+h4 { font-size: 1.05rem; font-weight: 700; }
+
+p { margin-bottom: 1em; font-size: 1rem; line-height: 1.75; }
+p:last-child { margin-bottom: 0; }
+strong { font-weight: 700; color: var(--text-primary); }
+
+/* Section labels — small blue kicker, no rule */
+.section-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--brand);
+  margin-bottom: 0.75rem;
+}
+
+.section-title { margin-bottom: 1rem; }
+
+.section-subtitle {
+  font-size: 1.08rem;
+  color: var(--text-secondary);
+  max-width: 640px;
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+.section-subtitle.centered { margin-left: auto; margin-right: auto; }
+.text-center { text-align: center; }
+
+/* Dark section text */
+.bg-dark, .hero, .page-hero, .contact-box, .mid-cta, .cta-banner, .testimonials-section, footer, .stats-bar { color: var(--text-on-dark); }
+
+.bg-dark h1, .bg-dark h2, .bg-dark h3, .bg-dark h4,
+.hero h1, .hero h2, .hero h3,
+.page-hero h1, .page-hero h2, .page-hero h3,
+.contact-box h1, .contact-box h2, .contact-box h3,
+.mid-cta h1, .mid-cta h2, .mid-cta h3,
+.cta-banner h1, .cta-banner h2, .cta-banner h3,
+.testimonials-section h1, .testimonials-section h2, .testimonials-section h3,
+footer h1, footer h2, footer h3, footer h4 { color: var(--text-on-dark); }
+
+.bg-dark p, .bg-dark li, .bg-dark span, .bg-dark a,
+.hero p, .hero li, .hero span,
+.page-hero p, .page-hero li, .page-hero span,
+.contact-box p, .contact-box li, .contact-box span, .contact-box a,
+.mid-cta p, .mid-cta li, .mid-cta span,
+.cta-banner p, .cta-banner li, .cta-banner span,
+.testimonials-section p, .testimonials-section li, .testimonials-section span,
+footer p, footer li, footer span, footer a { color: var(--text-on-dark-secondary); }
+
+.bg-dark a:hover, .contact-box a:hover, footer a:hover { color: var(--text-on-dark); }
+
+/* Fade-up animation */
+.fade-up {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.fade-up:nth-child(2) { transition-delay: 0.06s; }
+.fade-up:nth-child(3) { transition-delay: 0.12s; }
+.fade-up:nth-child(4) { transition-delay: 0.18s; }
+.fade-up:nth-child(5) { transition-delay: 0.24s; }
+.fade-up:nth-child(6) { transition-delay: 0.3s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .fade-up { opacity: 1; transform: none; transition: none; }
+}
+
+:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+::selection { background: var(--brand); color: var(--text-on-dark); }

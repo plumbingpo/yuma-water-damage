@@ -1,0 +1,58 @@
+/* ============================================
+   VARIANTS.CSS — per-page layout switches.
+   build.js puts one class per switch on <body> (see layoutClasses): tio-1..2, tib-1..2,
+   cs-1..2, ps-1..2, hm-1..2. (Review bar and sidebar-side switches were tried and dropped, 2026-11-17.) Option 1 of every switch is the default look, so only
+   the alternatives are written here. Everything above the review bar is never varied.
+   ============================================ */
+
+/* tio / tib: team block under the review bar. tio-2 = photo on the right. tib-2 = tinted band. */
+@media (min-width: 901px) {
+  .tio-2 .team-intro-inner { flex-direction: row-reverse; }
+  .tio-2 .team-intro-photo::before { inset: 14px 14px -14px -14px; }
+}
+.tib-2 .team-intro { background: var(--bg-off-white); }
+.tib-2 .team-intro-photo::before { background: var(--brand-tint-20); }
+
+/* cs: card styling. 2 = round icon tiles, cards with a blue top edge. */
+.cs-2 .service-card-icon, .cs-2 .scenario-icon, .cs-2 .why-us-icon { border-radius: 50%; }
+.cs-2 .damage-card, .cs-2 .commitment-card { border-top: 3px solid var(--brand); }
+.cs-2 .et-time { border-radius: var(--radius-full); }
+
+/* ps: process steps. 2 = round blue numbers on white cards. */
+.cs-1.ps-2 .process-step, .ps-2 .process-step { background: var(--bg-white); }
+.ps-2 .process-step-number, .ps-2 .vp-number { border-radius: 50%; background: var(--brand); }
+.ps-2 .svc-band-tint .process-step { background: var(--bg-white); }
+
+/* hm: homepage. 2 = call box on the left of the local band, reasons on white. */
+@media (min-width: 1101px) {
+  .hm-2 .local-band-inner { flex-direction: row-reverse; }
+}
+.hm-2 .reasons { background: var(--bg-white); border-bottom: 1px solid var(--border-light); }
+.hm-2 .reason-icon { margin-bottom: 16px; }
+
+/* Mold page: three-reasons band under the team section. It alternates with whatever tint the team band got. */
+.reasons.mold-reasons { background: var(--bg-off-white); border-bottom: 0; padding: 80px 0; }
+.tib-2 .reasons.mold-reasons { background: var(--bg-white); border-bottom: 1px solid var(--border-light); }
+@media (max-width: 768px) { .reasons.mold-reasons { padding: 52px 0; } }
+
+/* Mold page: full-width blue call band under the three mold reasons. Orange stays on the call button only. */
+.mold-cta { background: linear-gradient(115deg, #0157A3 0%, #016DCC 100%); padding: 76px 0; }
+.mold-cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 64px; }
+.mold-cta-text { max-width: 660px; }
+.mold-cta h2 { color: #ffffff; font-size: clamp(1.7rem, 3vw, 2.3rem); line-height: 1.2; margin: 0 0 14px; }
+.mold-cta p { color: rgba(255,255,255,0.92); font-size: 1.08rem; line-height: 1.7; margin: 0 0 22px; }
+.mold-cta-checks { display: flex; flex-wrap: wrap; gap: 10px 28px; list-style: none; margin: 0; padding: 0; }
+.mold-cta-checks li { display: flex; align-items: center; gap: 8px; color: #ffffff; font-weight: 600; font-size: 0.98rem; }
+.mold-cta-checks svg { color: #BFE0FF; flex-shrink: 0; }
+.mold-cta-action { flex-shrink: 0; text-align: center; }
+.mold-cta .btn-cta-call { display: inline-flex; flex-direction: column; align-items: center; gap: 4px; padding: 19px 44px 17px; font-size: 1.32rem; line-height: 1.15; text-decoration: none; box-shadow: 0 10px 28px rgba(3,27,53,0.28); }
+.mold-cta .btn-cta-call span { color: #ffffff; }
+.mold-cta .btn-cta-call small { font-size: 0.84rem; font-weight: 700; color: rgba(255,255,255,0.92); letter-spacing: 0.01em; }
+.mold-cta p.mold-cta-note { color: rgba(255,255,255,0.85); font-size: 0.9rem; margin: 14px 0 0; }
+@media (max-width: 900px) {
+  .mold-cta { padding: 56px 0; }
+  .mold-cta-inner { flex-direction: column; align-items: stretch; gap: 30px; text-align: center; }
+  .mold-cta-text { max-width: 640px; margin: 0 auto; }
+  .mold-cta-checks { justify-content: center; }
+  .mold-cta .btn-cta-call { display: flex; padding: 18px 20px 16px; max-width: 440px; margin: 0 auto; }
+}
